@@ -237,10 +237,13 @@ var Input = (function() {
     hasOverflow: function hasOverflow() {
       // 2 is arbitrary, just picking a small number to handle edge cases
       var constraint = this.$input.width() - 2;
-
+      
+      this.$overflowHelper.show();
       this.$overflowHelper.text(this.getInputValue());
-
-      return this.$overflowHelper.width() >= constraint;
+      
+      var hasOverflow = this.$overflowHelper.width() >= constraint;
+      
+      this.$overflowHelper.hide();
     },
 
     isCursorAtEnd: function() {

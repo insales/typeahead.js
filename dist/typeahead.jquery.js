@@ -1,7 +1,7 @@
 /*!
  * typeahead.js 0.10.5
  * https://github.com/twitter/typeahead.js
- * Copyright 2013-2014 Twitter, Inc. and other contributors; Licensed MIT
+ * Copyright 2013-2018 Twitter, Inc. and other contributors; Licensed MIT
  */
 
 (function($) {
@@ -504,8 +504,10 @@
             },
             hasOverflow: function hasOverflow() {
                 var constraint = this.$input.width() - 2;
+                this.$overflowHelper.show();
                 this.$overflowHelper.text(this.getInputValue());
-                return this.$overflowHelper.width() >= constraint;
+                var hasOverflow = this.$overflowHelper.width() >= constraint;
+                this.$overflowHelper.hide();
             },
             isCursorAtEnd: function() {
                 var valueLength, selectionStart, range;
